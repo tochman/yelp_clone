@@ -10,12 +10,6 @@ require 'shoulda-matchers'
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.library :rails
-  end
-end
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

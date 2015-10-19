@@ -15,6 +15,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
   gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'
