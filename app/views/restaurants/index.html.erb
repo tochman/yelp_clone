@@ -1,3 +1,27 @@
-<h1>There are no restaurants in the system</h1>
+<% if @restaurants.empty? %>
+  <h1>There are no restaurants in the system</h1>
+<% else %>
+  <table id="index_table_<%= @restaurants.first.class.name.pluralize.downcase %>">
+    <th>Name</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr id="<%= restaurant.name.pluralize.downcase %>">
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.rating %></td>
+        <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+        <td><%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+
+    </tbody>
+
+  </table>
+
+<% end %>
 
 <%= link_to 'Add restaurant', new_restaurant_path %>

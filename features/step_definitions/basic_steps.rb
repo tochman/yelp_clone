@@ -15,11 +15,18 @@ Then(/^I should see a create restaurant form$/) do
 end
 
 
-Given(/^I am on the "([^"]*)" page$/) do |page|
+Given(/^I (?:should be|am) on the "([^"]*)" page$/) do |page|
   case page.downcase
     when 'home'
       visit root_path
     when 'new restaurant'
       visit new_restaurant_path
+  end
+end
+
+Given(/^the following ([^"]*) exist:$/) do |model, table|
+  class_name = model.singularize.constantize
+  table.hashes.each do |hash|
+    class_name.create!(hash)
   end
 end

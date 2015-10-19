@@ -2,6 +2,11 @@ Feature: As application user,
   In order to add a restaurant,
   I would like to see a form for adding restaurants.
 
+  Background:
+    Given the following Restaurants exist:
+      | name      | rating |
+      | MyJoint   | 1      |
+      | YourJoint | 4      |
 
   Scenario: Listing restaurants index view
     Given I visit the root path
@@ -13,5 +18,9 @@ Feature: As application user,
     Then I should see "Create Restaurant"
     And I should see a create restaurant form
 
-  Scenario:
-    Given I am on the "New Restaurant" page
+  Scenario: Show restaurant details
+    Given I visit the root path
+    Then I should see an index of "Restaurants"
+    And I should see 2 record rows
+    And I click the "Show" link for "MyJoint"
+    Then I should be on the "show" page for "MyJoint"
