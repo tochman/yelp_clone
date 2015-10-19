@@ -25,3 +25,9 @@ Then(/^I should be on the "([^"]*)" page for "([^"]*)"$/) do |page, object|
       visit restaurant_path(restaurant)
   end
 end
+
+Given(/^there are no restaurants in the system$/) do
+  Restaurant.all.each do |restaurant|
+    restaurant.destroy
+  end
+end

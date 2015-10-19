@@ -9,6 +9,7 @@ Feature: As application user,
       | YourJoint | 4      |
 
   Scenario: Listing restaurants index view
+    Given there are no restaurants in the system
     Given I visit the root path
     Then I should see "There are no restaurants in the system"
 
