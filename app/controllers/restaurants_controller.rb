@@ -24,7 +24,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+      redirect_to restaurants_path, notice: "Restaurant #{@restaurant.name} was successfully created."
     else
       render :new
     end
@@ -53,6 +53,8 @@ class RestaurantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def restaurant_params
-      params[:restaurant]
+      params.require(:restaurant).permit(:name, :rating)
+
+      #params[:restaurant]
     end
 end

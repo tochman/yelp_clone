@@ -23,11 +23,12 @@ Feature: As application user,
   Scenario: Adding a restaurant
     Given I visit the root path
     And I click "Add restaurant"
-    Then I should see "Create Restaurant"
+    Then I should see "New Restaurant"
     And I should see a create restaurant form
     And I fill in "Name" with "NewJoint"
     And I fill in "Rating" with "3"
     And I click "Create Restaurant"
     Then I should see an index of "Restaurants"
     And I should see 3 record rows
+    And I should see "Restaurant NewJoint was successfully created."
 

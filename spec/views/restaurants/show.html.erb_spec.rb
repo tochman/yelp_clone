@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'restaurants/show', type: :view do
+describe 'restaurants/show', type: :view do
   before do
-    @restaurant = assign(:restaurant, FactoryGirl.create(:restaurant, name: 'MyJoint'))
+    assign(:restaurant, FactoryGirl.create(:restaurant, name: 'MyJoint'))
   end
 
   it 'renders attributes' do
