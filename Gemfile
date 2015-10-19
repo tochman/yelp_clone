@@ -14,6 +14,7 @@ group :development, :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
   gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'
