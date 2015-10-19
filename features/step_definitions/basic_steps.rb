@@ -1,3 +1,7 @@
+Then(/^show me the page$/) do
+  save_and_open_page
+end
+
 Given(/^I visit the root path$/) do
   visit root_path
 end
@@ -29,4 +33,8 @@ Given(/^the following ([^"]*) exist:$/) do |model, table|
   table.hashes.each do |hash|
     class_name.create!(hash)
   end
+end
+
+And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
+  fill_in field, with: value
 end

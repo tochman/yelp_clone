@@ -19,5 +19,6 @@ group :development, :test do
   gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'launchy'
 end
 

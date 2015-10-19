@@ -13,15 +13,21 @@ Feature: As application user,
     Given I visit the root path
     Then I should see "There are no restaurants in the system"
 
-  Scenario: Adding a restaurant
-    Given I visit the root path
-    And I click "Add restaurant"
-    Then I should see "Create Restaurant"
-    And I should see a create restaurant form
-
   Scenario: Show restaurant details
     Given I visit the root path
     Then I should see an index of "Restaurants"
     And I should see 2 record rows
     And I click the "Show" link for "MyJoint"
     Then I should be on the "show" page for "MyJoint"
+
+  Scenario: Adding a restaurant
+    Given I visit the root path
+    And I click "Add restaurant"
+    Then I should see "Create Restaurant"
+    And I should see a create restaurant form
+    And I fill in "Name" with "NewJoint"
+    And I fill in "Rating" with "3"
+    And I click "Create Restaurant"
+    Then I should see an index of "Restaurants"
+    And I should see 3 record rows
+
