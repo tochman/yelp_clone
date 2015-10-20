@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Restaurant, type: :model do
+  subject { FactoryGirl.create(:restaurant) }
+
   describe 'Fixtures' do
     it 'should have valid Fixture Factory' do
-      expect(FactoryGirl.create(:restaurant)).to be_valid
+      expect(subject).to be_valid
     end
   end
 
@@ -12,8 +14,14 @@ RSpec.describe Restaurant, type: :model do
     it { is_expected.to have_db_column(:rating).of_type(:integer) }
   end
 
-  describe 'validations' do
+  describe 'associations' do
 
+    it { is_expected.to have_many :comments }
+
+    it 'creates a comment' do
+      comment = subject.comments.create(body: 'MyComment')
+      expect(comment.restaurant).to eq subject
+    end
   end
 
 end

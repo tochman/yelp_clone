@@ -23,7 +23,7 @@ RSpec.describe RestaurantsController, type: :controller do
   end
 
   context 'GET #show' do
-    let(:restaurant) { FactoryGirl.create(:restaurant, valid_attributes)}
+    let(:restaurant) { FactoryGirl.create(:restaurant, name: 'MyJoint', rating: 4)}
 
     it 'should render index page for projects' do
       get :show, { id: restaurant.id }

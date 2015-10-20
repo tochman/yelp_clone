@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
+    flash.keep(:notice)
   end
 
   # GET /restaurants/new
@@ -54,7 +55,5 @@ class RestaurantsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :rating)
-
-      #params[:restaurant]
     end
 end

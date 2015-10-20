@@ -38,3 +38,7 @@ end
 And(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
   fill_in field, with: value
 end
+
+And(/^I select "([^"]*)" from "([^"]*)"$/) do |value, element|
+  select value, from: element
+end
