@@ -17,3 +17,12 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 end
+
+
+RSpec::Matchers.define :exist_in_database do
+
+  match do |actual|
+    actual.class.exists?(actual.id)
+  end
+
+end

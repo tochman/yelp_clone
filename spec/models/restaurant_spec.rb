@@ -22,6 +22,12 @@ RSpec.describe Restaurant, type: :model do
       comment = subject.comments.create(body: 'MyComment')
       expect(comment.restaurant).to eq subject
     end
+
+    it 'destroys a comment together with subject' do
+      comment = subject.comments.create(body: 'MyComment')
+      subject.destroy
+      expect(comment).not_to exist_in_database
+    end
   end
 
 end
