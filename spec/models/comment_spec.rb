@@ -13,5 +13,6 @@ RSpec.describe Comment, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to :restaurant}
+    it { is_expected.to belong_to :user }
   end
 end

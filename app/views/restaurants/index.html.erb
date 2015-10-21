@@ -2,9 +2,9 @@
 <% if @restaurants.empty? %>
   <h1>There are no restaurants in the system</h1>
 <% else %>
+  <div class="row" id="index_table_<%= @restaurants.first.class.name.pluralize.downcase %>">
+    <% @restaurants.each_slice(3) do |group| %>
 
-  <% @restaurants.each_slice(3) do |group| %>
-    <div class="row" id="index_table_<%= @restaurants.first.class.name.pluralize.downcase %>">
       <% group.each do |restaurant| %>
         <div class="medium-6 large-4 columns">
           <article class="article-card" id="<%= restaurant.name.downcase %>">
@@ -16,6 +16,7 @@
               <h4><%= restaurant.name %></h4>
 
               <p><%= restaurant.description %></p>
+
               <p>
                 <%= link_to 'Show', restaurant_path(restaurant), class: 'button tiny' %>
                 <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' if current_user %>
@@ -25,15 +26,15 @@
           </article>
         </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 <% end %>
 
 
 
 <script>
-  $(function() {
+  $(function () {
     $('span.stars').stars();
   });
 </script>

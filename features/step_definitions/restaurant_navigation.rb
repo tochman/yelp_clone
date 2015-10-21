@@ -1,18 +1,18 @@
 Then(/^I should see an index of "([^"]*)"$/) do |model|
-  expect(page).to have_selector("table#index_table_#{model.downcase}")
+  expect(page).to have_selector("div#index_table_#{model.downcase}")
 end
 
 
-And(/^I should see ([^"]*) record (?:row|rows$)/) do |count|
-  within 'tbody' do
-    expect(page).to have_selector('tr', count: count.to_i)
+And(/^I should see ([^"]*) "([^"]*)" record (?:row|rows$)/) do |count, model|
+  within "div#index_table_#{model.downcase}" do
+    expect(page).to have_selector('article', count: count.to_i)
   end
 end
 
 When(/^I click the "([^"]*)" link for "([^"]*)"$/) do |link, item|
-  page.all('table tr').each do |tr|
-    next unless tr.has_text?(item)
-    within(tr) do
+  page.all('article').each do |article|
+    next unless article.has_text?(item)
+    within(article) do
       click_link link.humanize
     end
   end

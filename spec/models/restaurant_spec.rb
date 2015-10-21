@@ -17,6 +17,7 @@ RSpec.describe Restaurant, type: :model do
   describe 'associations' do
 
     it { is_expected.to have_many :comments }
+    it { is_expected.to belong_to :user }
 
     it 'creates a comment' do
       comment = subject.comments.create(body: 'MyComment')
