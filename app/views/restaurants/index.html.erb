@@ -1,28 +1,39 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Add restaurant', new_restaurant_path, class: 'button' %>
 <% if @restaurants.empty? %>
   <h1>There are no restaurants in the system</h1>
 <% else %>
-  <table id="index_table_<%= @restaurants.first.class.name.pluralize.downcase %>">
-    <th>Name</th>
-    <th>Rating</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr id="<%= restaurant.name.pluralize.downcase %>">
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.rating %></td>
-        <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete %></td>
-      </tr>
-    <% end %>
 
-    </tbody>
+  <% @restaurants.each_slice(3) do |group| %>
+    <div class="row" id="index_table_<%= @restaurants.first.class.name.pluralize.downcase %>">
+      <% group.each do |restaurant| %>
+        <div class="medium-6 large-4 columns">
+          <article class="article-card" id="<%= restaurant.name.downcase %>">
+            <img src="<%= image_url(restaurant) %>">
 
-  </table>
+            <div class="card-content">
+              <img class="post-icon" src="<%= user_avatar %>" alt="foundation icon">
+              <h4><%= restaurant.name %></h4>
+              <span class="stars"><%= restaurant.comments.any? ? calculated_rating(restaurant) : restaurant.rating %></span><span><%= restaurant.comments.any? ? 'from reviews': 'initial rating' %></span>
+              <p><%= restaurant.description %></p>
+              <p>
+                <%= link_to 'Show', restaurant_path(restaurant), class: 'button tiny' %>
+                <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' %>
+                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert' %>
+              </p>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
 <% end %>
 
-<%= link_to 'Add restaurant', new_restaurant_path %>
+
+
+<script>
+  $(function() {
+    $('span.stars').stars();
+  });
+</script>

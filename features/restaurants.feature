@@ -29,6 +29,6 @@ Feature: As application user,
     And I fill in "Rating" with "3"
     And I click "Create Restaurant"
     Then I should see an index of "Restaurants"
-    #And I should see 3 record rows
+    And I should see 3 record rows
     And I should see "Restaurant NewJoint was successfully created."
 
