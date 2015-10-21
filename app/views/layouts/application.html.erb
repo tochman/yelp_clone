@@ -47,12 +47,21 @@
       <div class="signup-panel left-solid">
         <p class="welcome">Registered Users</p>
         <%= form_for :user, url: session_path(:user) do |f| %>
-
-          <div class="small-10  columns">
-            <%= f.text_field :email %>
+          <div class="row collapse">
+            <div class="small-2  columns">
+              <span class="prefix"><i class="fi-torso-female"></i></span>
+            </div>
+            <div class="small-10  columns">
+              <%= f.text_field :email, placeholder: 'Your email' %>
+            </div>
           </div>
-          <div class="small-10  columns">
-            <%= f.password_field :password %>
+          <div class="row collapse">
+            <div class="small-2 columns ">
+              <span class="prefix"><i class="fi-lock"></i></span>
+            </div>
+            <div class="small-10  columns">
+              <%= f.password_field :password, placeholder: 'Your password' %>
+            </div>
           </div>
           <div class="small-10  columns">
             <%= f.check_box :remember_me %>
@@ -61,27 +70,8 @@
           <div class="small-10  columns">
             <%= f.submit 'Sign in', class: 'button' %>
           </div>
-
         <% end %>
-        <!--form>
-          <div class="row collapse">
-            <div class="small-2  columns">
-              <span class="prefix"><i class="fi-torso-female"></i></span>
-            </div>
-            <div class="small-10  columns">
-              <input type="text" placeholder="username">
-            </div>
-          </div>
-          <div class="row collapse">
-            <div class="small-2 columns ">
-              <span class="prefix"><i class="fi-lock"></i></span>
-            </div>
-            <div class="small-10 columns ">
-              <input type="text" placeholder="password">
-            </div>
-          </div>
-        </form>
-        <a href="#" class="button ">Log In </a-->
+
       </div>
     </div>
 
@@ -89,9 +79,8 @@
       <div class="signup-panel newusers">
         <p class="welcome"> New User?</p>
 
-        <p>By creating an account with us, you will be able to move through the checkout process faster, view and track
-          your orders, and more.</p><br>
-        <a href="#" class="button ">Sign Up</a></br>
+        <p>By creating an account with us, you will be able to add restaurants, reviews and more.</p><br>
+        <%= link_to 'Sign up', new_user_registration_path, class: 'button' %>
       </div>
     </div>
 
