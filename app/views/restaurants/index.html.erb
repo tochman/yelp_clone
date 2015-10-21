@@ -9,8 +9,7 @@
       <% group.each do |restaurant| %>
         <div class="medium-6 large-4 columns">
           <article class="article-card" id="<%= restaurant.name.downcase %>">
-            <img src="<%= image_url(restaurant) %>">
-
+            <%= image_tag image_url(restaurant) %>
             <div class="card-content">
               <img class="post-icon" src="<%= user_avatar %>" alt="foundation icon">
               <span class="stars right"><%= restaurant.comments.any? ? calculated_rating(restaurant) : restaurant.rating %></span>
