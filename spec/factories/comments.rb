@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :comment do
-    body "MyText"
-restaurant nil
+    title 'my title'
+    body 'my comment'
+    rating 5
   end
 
 end
