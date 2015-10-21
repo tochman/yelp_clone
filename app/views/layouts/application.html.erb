@@ -14,7 +14,7 @@
 
 <body>
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet"/>
 
 <nav class="menu">
   <h1 class="name"><i class="fi-shield"></i> YELP CLONE</h1>
@@ -23,10 +23,19 @@
     <li class="active"><a href="#">Blog</a></li>
     <li><a href="#">Pricing</a></li-->
   </ul>
-  <ul class="inline-list hide-for-small-only account-action">
-    <li><a href="#" data-reveal-id="myModal">Login</a></li>
-    <li class=""><a class="signup" href="#" data-reveal-id="myModal">Signup</a></li>
-  </ul>
+  <% if current_user %>
+    <ul class="inline-list hide-for-small-only account-action">
+      <li style="color: white;">Logged in as:  <%= current_user.username %></li>
+      <li><%= link_to 'log out', destroy_user_session_path, method: :delete %></li>
+    </ul>
+
+  <% else %>
+    <ul class="inline-list hide-for-small-only account-action">
+      <li><a href="#" data-reveal-id="myModal">Login</a></li>
+      <li class=""><a class="signup" href="#" data-reveal-id="myModal">Signup</a></li>
+    </ul>
+
+  <% end %>
   <a class="account hide-for-medium-up" href="#" data-reveal-id="myModal"><i class="fi-unlock"></i></a>
 </nav>
 
@@ -37,8 +46,24 @@
     <div class="large-6 columns auth-plain">
       <div class="signup-panel left-solid">
         <p class="welcome">Registered Users</p>
+        <%= form_for :user, url: session_path(:user) do |f| %>
 
-        <form>
+          <div class="small-10  columns">
+            <%= f.text_field :email %>
+          </div>
+          <div class="small-10  columns">
+            <%= f.password_field :password %>
+          </div>
+          <div class="small-10  columns">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+          <div class="small-10  columns">
+            <%= f.submit 'Sign in', class: 'button' %>
+          </div>
+
+        <% end %>
+        <!--form>
           <div class="row collapse">
             <div class="small-2  columns">
               <span class="prefix"><i class="fi-torso-female"></i></span>
@@ -56,7 +81,7 @@
             </div>
           </div>
         </form>
-        <a href="#" class="button ">Log In </a>
+        <a href="#" class="button ">Log In </a-->
       </div>
     </div>
 
@@ -76,6 +101,7 @@
 <div class="row">
   <div class="small-12 large-12 columns">
     <p class="notice"><%= notice %></p>
+
     <p class="alert"><%= alert %></p>
     <%= yield %>
 
@@ -86,6 +112,7 @@
   <div class="row">
     <div class="small-12 medium-6 large-5 columns">
       <p class="logo"><i class="fi-shield"></i> YELP CLONE</p>
+
       <p class="footer-links">
         <a href="#">Home</a>
         <a href="#">Blog</a>
@@ -94,13 +121,18 @@
         <a href="#">Faq</a>
         <a href="#">Contact</a>
       </p>
+
       <p class="copywrite">Copywrite not copywrite © 2015</p>
     </div>
 
     <div class="small-12 medium-12 large-7 columns">
       <p class="about">About Yelp Clone</p>
-      <p class="about subheader">Developed with Ruby and Ruby on Rails. Styled using Foundation 5.0. Tested with Rspec and Capybara. Deployed to Heroku. All OpenSourced and/or Free!</p>
-      <p class="about subheader">Made with <i class="fi-heart" style="color: red; font-size: 18px;"></i> at <%= link_to'Makers Sweden', 'http://www.makersacademy.se' %></p>
+
+      <p class="about subheader">Developed with Ruby and Ruby on Rails. Styled using Foundation 5.0. Tested with Rspec
+        and Capybara. Deployed to Heroku. All OpenSourced and/or Free!</p>
+
+      <p class="about subheader">Made with <i class="fi-heart" style="color: red; font-size: 18px;"></i>
+        at <%= link_to 'Makers Sweden', 'http://www.makersacademy.se' %></p>
       <ul class="inline-list social">
         <a href="https://www.facebook.com/makersacademysweden"><i class="fi-social-facebook"></i></a>
         <a href="https://twitter.com/MakersSweden"><i class="fi-social-twitter"></i></a>

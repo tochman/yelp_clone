@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <%= link_to 'Add restaurant', new_restaurant_path, class: 'button' %>
 <% if @restaurants.empty? %>
   <h1>There are no restaurants in the system</h1>
@@ -19,8 +18,8 @@
               <p><%= restaurant.description %></p>
               <p>
                 <%= link_to 'Show', restaurant_path(restaurant), class: 'button tiny' %>
-                <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' %>
-                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert ' %>
+                <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' if current_user %>
+                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert ' if current_user %>
               </p>
             </div>
           </article>
