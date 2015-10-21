@@ -13,13 +13,15 @@
 
             <div class="card-content">
               <img class="post-icon" src="<%= user_avatar %>" alt="foundation icon">
+              <span class="stars right"><%= restaurant.comments.any? ? calculated_rating(restaurant) : restaurant.rating %></span>
+
               <h4><%= restaurant.name %></h4>
-              <span class="stars"><%= restaurant.comments.any? ? calculated_rating(restaurant) : restaurant.rating %></span><span><%= restaurant.comments.any? ? 'from reviews': 'initial rating' %></span>
+
               <p><%= restaurant.description %></p>
               <p>
                 <%= link_to 'Show', restaurant_path(restaurant), class: 'button tiny' %>
                 <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' %>
-                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert' %>
+                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert ' %>
               </p>
             </div>
           </article>

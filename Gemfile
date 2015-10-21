@@ -27,3 +27,8 @@ group :development, :test do
   gem 'guard-cucumber'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
+
