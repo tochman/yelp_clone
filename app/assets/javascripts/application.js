@@ -16,9 +16,11 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function () {
+    $(document).foundation();
+});
 
-$( document ).ready(function() {
+$(document).ready(function () {
     var flash = $('#notification');
     if (flash.length > 0) {
         window.setTimeout(function () {
