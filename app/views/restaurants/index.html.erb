@@ -20,8 +20,8 @@
 
               <p>
                 <%= link_to 'Show', restaurant_path(restaurant), class: 'button tiny' %>
-                <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' if current_user.is_owner?(restaurant) %>
-                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert ' if current_user.is_owner?(restaurant) %>
+                <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'button tiny' if current_user && current_user.is_owner?(restaurant) %>
+                <%= link_to 'Destroy', restaurant_path(restaurant), confirm: 'Are you sure?', method: :delete, class: 'button tiny alert ' if current_user && current_user.is_owner?(restaurant) %>
               </p>
             </div>
           </article>
