@@ -7,7 +7,6 @@ Feature: As a visitor
     Given I visit the root path
     And I click "Sign up"
     And within "Sign up" I fill in "Username" with "tochman"
-    #Then show me the page
     And within "Sign up" I fill in "Email" with "thomas@random.com"
     And within "Sign up" I fill in "Password" with "password"
     And within "Sign up" I fill in "Password confirmation" with "password"
