@@ -5,4 +5,8 @@ module ApplicationHelper
     res = Net::HTTP.get_response(URI("#{gravatar_url}?d=404"))
     (res.code == '404') ? 'http://www.websitemagazine.com/images/blog/anonymous-user.png' : gravatar_url
   end
+
+  def creator_name(object)
+
+  end
 end

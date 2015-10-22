@@ -22,6 +22,10 @@ $primary-color: #eebc87;
 
 .row {
   max-width: 100%;
+  .post-icon {
+    width: 3rem;
+    border-radius: 50%;
+  }
 }
 
 .menu {

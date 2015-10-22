@@ -1,19 +1,46 @@
+<div class="row">
+  <div class="medium-12 large-12 columns">
+    <article class="article-card" id="<%= @restaurant.name.downcase %>">
+      <div class="row">
+        <div class="large-6 columns ">
+          <%= image_tag image_url(@restaurant) %>
+          <p style="margin-top: 20px; margin-left: 20px;">
+            <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'button' if current_user.is_owner?(@restaurant) %>
+            <%= link_to 'Destroy', restaurant_path(@restaurant), confirm: 'Are you sure?', method: :delete, class: 'button alert ' if current_user.is_owner?(@restaurant) %>
+            <%= link_to 'Back', restaurants_path, class: 'button' %>
 
-<%= image_tag image_url(@restaurant), style: 'width: 200px; height: auto;' %>
+          </p>
+        </div>
+      <div class="large-6 columns">
+        <img class="post-icon" src="<%= user_avatar(@restaurant) %>" alt="foundation icon">
 
-<h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.description %></p>
-<p><%= @restaurant.rating %></p>
-<% if @restaurant.comments.any? %>
-  <h3>Reviews for <%= @restaurant.name %></h3>
-  <% @restaurant.comments.each do |comment| %>
-    <p><%= comment.body %></p>
-    <p><strong>Added by: <%= comment.try(:user).try(:username) %></strong></p>
-    <p><strong><%= comment.rating %></strong></p>
-  <% end %>
-<% end %>
+        <p class="post-author">Added by: <%= @restaurant.try(:user).try(:username) %></p>
+        <span class="stars right"><%= calculated_rating(@restaurant) %></span>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'button' %> |
-<%= link_to 'Back', restaurants_path, class: 'button' %> |
-<%= link_to 'Comment', new_restaurant_comment_path(@restaurant), class: 'button' %>
+        <h4><%= @restaurant.name %></h4>
 
+        <p><%= @restaurant.description %></p>
+        <% if @restaurant.comments.any? %>
+          <h3>Reviews for <%= @restaurant.name %></h3>
+          <% @restaurant.comments.each do |comment| %>
+            <p><%= comment.body %></p>
+
+            <p><strong>Added by: <%= comment.try(:user).try(:username) %></strong></p>
+
+            <p><strong><%= comment.rating %></strong></p>
+          <% end %>
+        <% end %>
+        <p>
+          <%= link_to 'Comment', new_restaurant_comment_path(@restaurant), class: 'button' %>
+        </p>
+      </div>
+    </article>
+  </div>
+</div>
+
+
+<script>
+  $(function () {
+    $('span.stars').stars();
+  });
+</script>
