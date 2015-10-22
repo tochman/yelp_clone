@@ -10,7 +10,7 @@
           <article class="article-card" id="<%= restaurant.name.downcase %>">
             <%= image_tag image_url(restaurant) %>
             <div class="card-content">
-              <img class="post-icon" src="<%= user_avatar %>" alt="foundation icon">
+              <img class="post-icon" src="<%= user_avatar(restaurant) %>" alt="foundation icon">
               <p class="post-author">Added by: <%= restaurant.try(:user).try(:username) %></p>
               <span class="stars right"><%= calculated_rating(restaurant) %></span>
 
