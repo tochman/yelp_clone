@@ -18,4 +18,5 @@ Feature: As application user,
     And I click "Add"
     Then I should be on the "show" page for "MyJoint"
     And I should see "My comment"
+    And I should see "Added by: tochman"
     And I should see "Your comment was added. Thank you!"

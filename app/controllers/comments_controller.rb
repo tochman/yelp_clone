@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @restaurant.comments.create(comment_params)
+    user_hash = { user: current_user}
+    @restaurant.comments.create(comment_params.merge!(user_hash))
     redirect_to @restaurant, notice: 'Your comment was added. Thank you!'
   end
 

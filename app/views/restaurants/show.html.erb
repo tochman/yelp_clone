@@ -8,6 +8,7 @@
   <h3>Reviews for <%= @restaurant.name %></h3>
   <% @restaurant.comments.each do |comment| %>
     <p><%= comment.body %></p>
+    <p><strong>Added by: <%= comment.user.username %></strong></p>
     <p><strong><%= comment.rating %></strong></p>
   <% end %>
 <% end %>

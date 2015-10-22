@@ -11,7 +11,8 @@
             <%= image_tag image_url(restaurant) %>
             <div class="card-content">
               <img class="post-icon" src="<%= user_avatar %>" alt="foundation icon">
-              <span class="stars right"><%= restaurant.comments.any? ? calculated_rating(restaurant) : restaurant.rating %></span>
+              <p class="post-author">Added by: <%= restaurant.try(:user).try(:username) %></p>
+              <span class="stars right"><%= calculated_rating(restaurant) %></span>
 
               <h4><%= restaurant.name %></h4>
 

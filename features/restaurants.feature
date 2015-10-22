@@ -31,5 +31,6 @@ Feature: As application user,
     And I click "Add restaurant"
     Then I should see an index of "Restaurants"
     And I should see 3 "Restaurants" record rows
+    And I should see "Added by: tochman"
     And I should see "Restaurant NewJoint was successfully created."
 

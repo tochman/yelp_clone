@@ -31,7 +31,9 @@ end
 Given(/^the following ([^"]*) exist:$/) do |model, table|
   class_name = model.singularize.constantize
   table.hashes.each do |hash|
-    class_name.create!(hash)
+    instance = class_name.new(hash)
+    instance.user = User.last if class_name != User
+    instance.save
   end
 end
 

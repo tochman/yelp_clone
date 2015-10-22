@@ -22,7 +22,7 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants
   def create
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = current_user.restaurants.new(restaurant_params)
 
     if @restaurant.save
       redirect_to restaurants_path, notice: "Restaurant #{@restaurant.name} was successfully created."
