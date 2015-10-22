@@ -11,28 +11,29 @@
 
           </p>
         </div>
-      <div class="large-6 columns">
-        <img class="post-icon" src="<%= user_avatar(@restaurant) %>" alt="foundation icon">
+        <div class="large-6 columns">
+          <img class="post-icon" src="<%= user_avatar(@restaurant) %>" alt="foundation icon">
 
-        <p class="post-author">Added by: <%= @restaurant.try(:user).try(:username) %></p>
-        <span class="stars right"><%= calculated_rating(@restaurant) %></span>
+          <p class="post-author">Added by: <%= @restaurant.try(:user).try(:username) %></p>
+          <span class="stars right"><%= calculated_rating(@restaurant) %></span>
 
-        <h4><%= @restaurant.name %></h4>
+          <h4><%= @restaurant.name %></h4>
 
-        <p><%= @restaurant.description %></p>
-        <% if @restaurant.comments.any? %>
-          <h3>Reviews for <%= @restaurant.name %></h3>
-          <% @restaurant.comments.each do |comment| %>
-            <p><%= comment.body %></p>
+          <p><%= @restaurant.description %></p>
+          <% if @restaurant.comments.any? %>
+            <h3>Reviews for <%= @restaurant.name %></h3>
+            <% @restaurant.comments.each do |comment| %>
+              <p><%= comment.body %></p>
 
-            <p><strong>Added by: <%= comment.try(:user).try(:username) %></strong></p>
+              <p><strong>Added by: <%= comment.try(:user).try(:username) %></strong></p>
 
-            <p><strong><%= comment.rating %></strong></p>
+              <p><strong><%= comment.rating %></strong></p>
+            <% end %>
           <% end %>
-        <% end %>
-        <p>
-          <%= link_to 'Comment', new_restaurant_comment_path(@restaurant), class: 'button' %>
-        </p>
+          <p>
+            <%= link_to 'Comment', new_restaurant_comment_path(@restaurant), class: 'button' %>
+          </p>
+        </div>
       </div>
     </article>
   </div>

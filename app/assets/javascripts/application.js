@@ -17,3 +17,14 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$( document ).ready(function() {
+    var flash = $('#notification');
+    if (flash.length > 0) {
+        window.setTimeout(function () {
+            flash.fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 5000);
+    }
+});
