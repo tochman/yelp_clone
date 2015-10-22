@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   has_many :restaurants
   has_many :comments
 
+  def is_owner?(obj)
+    obj.user_id == self.id
+  end
 end
