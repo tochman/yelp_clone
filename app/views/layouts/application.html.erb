@@ -69,7 +69,7 @@
             <%= f.submit 'Sign in', class: 'button tiny' %>
           </div>
           <div class="small-10 columns">
-            <%= link_to 'Facebook Sign in', user_omniauth_authorize_path(:facebook), class: 'button tiny' %>
+            <%= link_to 'Facebook Sign in', omniauth_authorize_path(:facebook), class: 'button tiny' %>
           </div>
         <% end %>
 
