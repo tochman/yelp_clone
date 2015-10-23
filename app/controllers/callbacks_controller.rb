@@ -5,7 +5,6 @@ class CallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    binding.pry
     flash[:notice] = 'Something went wrong'
     super
   end
