@@ -18,7 +18,7 @@
   <h1 class="name"><i class="fi-shield"></i> YELPZY</h1>
   <ul class="inline-list">
     <li><a href="#">Home</a></li>
-    <li class="active"><a href="#">Blog</a></li>
+    <li class="active"><%= link_to 'About', about_path %></li>
     <li><a href="#">Pricing</a></li>
   </ul>
   <% if current_user %>
@@ -66,7 +66,14 @@
             <%= f.label :remember_me %>
           </div>
           <div class="small-10  columns">
-            <%= f.submit 'Sign in', class: 'button' %>
+            <%= f.submit 'Sign in', class: 'button tiny' %>
+          </div>
+          <div class="small-10 columns">
+            <%- if devise_mapping.omniauthable? %>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: 'button tiny' %><br />
+              <% end -%>
+            <% end -%>
           </div>
         <% end %>
 
@@ -102,7 +109,7 @@
 
       <p class="footer-links">
         <a href="#">Home</a>
-        <a href="#">Blog</a>
+        <%= link_to 'About', about_path %>
         <a href="#">Pricing</a>
       </p>
 

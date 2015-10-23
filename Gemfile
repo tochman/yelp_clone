@@ -9,7 +9,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'high_voltage', '~> 2.4.0'
+gem 'dotenv-rails'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 group :development, :test do

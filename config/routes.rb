@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations'}
+  devise_for :users, controllers: { registrations: 'registrations',omniauth_callbacks: 'callbacks' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :comments
   end
+
+  get 'about' => 'high_voltage/pages#show', id: 'about'
 
   root 'restaurants#index'
 
